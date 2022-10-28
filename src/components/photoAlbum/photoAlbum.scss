@@ -1,0 +1,10 @@
+div {
+  .icon {
+    font-size: 200px;
+    color: rgb(199, 199, 199);
+
+    &:hover {
+      color: green;
+    }
+  }
+}

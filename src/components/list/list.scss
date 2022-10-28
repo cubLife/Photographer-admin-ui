@@ -1,0 +1,36 @@
+.list {
+  align-items: center;
+  display: flex;
+
+  .tableCell {
+    align-items: center;
+
+    .statusTrue {
+      padding: 5px;
+      border-radius: 5px;
+      color: green;
+      background-color: rgba(0, 128, 0, 0.107);
+    }
+  }
+
+  .status {
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+
+    &.New {
+      color: rgb(240, 13, 13);
+      background-color: rgba(240, 13, 13, 0.212);
+    }
+
+    &.Approved {
+      color: rgb(241, 181, 29);
+      background-color: rgba(255, 255, 0, 0.116);
+    }
+
+    &.Complete {
+      color: green;
+      background-color: rgba(0, 128, 0, 0.107);
+    }
+  }
+}

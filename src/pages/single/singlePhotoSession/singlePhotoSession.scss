@@ -1,0 +1,17 @@
+.single {
+  display: flex;
+  width: 100%;
+
+  .singleContainer {
+    flex: 6;
+    // position: relative;
+  }
+
+  .title {
+    text-align: center;
+    color: black;
+    padding: 10px;
+    margin: 10px;
+    font-size: 40px;
+  }
+}
