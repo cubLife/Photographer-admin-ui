@@ -11,7 +11,7 @@ build_image:
         - docker:dind
     variables:
         DOCKER_TLS-CREDITER: "/certs"
-    defore_script:
+    before_script:
         - docker ligin -u $DOCKER_USER -p $DOCKER_PASSWORD
     script:
         - docker build -t $IMAGE_NAME .
