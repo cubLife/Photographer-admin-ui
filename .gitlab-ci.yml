@@ -1,0 +1,18 @@
+variables:
+    IMAGE_NAME: $DOCKER_USER/photographer-amin-ui
+
+stages:
+     - build
+
+build_image:
+    stage: build
+    image: docker
+    services:
+        - docker:dind
+    variables:
+        DOCKER_TLS-CREDITER: "/certs"
+    defore_script:
+        - docker ligin -u $DOCKER_USER -p $DOCKER_PASSWORD
+    script:
+        - docker build -t $IMAGE_NAME .
+        - docker push $IMAGE_NAME
