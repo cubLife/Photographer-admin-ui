@@ -8,10 +8,10 @@ import "./edit.scss";
 import Progress from "../../components/progressBar/Progress";
 
 const EditPhotoSession = ({ inputs, title }) => {
-  const location = useLocation();
-  const { url } = location.state;
-  const { iconUrl } = location.state;
-  const { id } = location.state;
+  const storageData = JSON.parse(sessionStorage.getItem("editData"));
+  const url = storageData.url;
+  const iconUrl = storageData.iconUrl;
+  const id = storageData.id;
 
   const [data, setData] = useState([]);
   const [file, setFile] = useState();

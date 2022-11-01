@@ -9,7 +9,7 @@ import SnackbarAlert from "../snackbar/SnackbarAlert";
 
 const SessionDataTable = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [columns, setColumns] = useState([]);
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
@@ -21,30 +21,27 @@ const SessionDataTable = () => {
       headerName: "Action",
       width: 180,
       renderCell: (params) => {
+        sessionStorage.setItem("sessionId", params.row.id);
+
+        const editData = {
+          url: params.row._links.self.href,
+          iconUrl: params.row._links.icon.href,
+          id: params.row.id,
+          name: params.row.name,
+        };
+
+        sessionStorage.setItem("editData", JSON.stringify(editData));
+
         return (
           <div className="cellAction">
             <Link
-              to={`/photo-sessions/view/${params.row.id}`}
-              state={{
-                sessionId: params.row.id,
-                url: params.row._links.photoAlbums.href,
-                iconUrl: params.row._links.icon.href,
-                name: params.row.name,
-              }}
+              key={params.row.id}
+              to={`/photo-sessions/view/${params.row.name}`}
               className="link"
             >
               <div className="button">View</div>
             </Link>
-            <Link
-              to={`/photo-sessions/${params.row.id}`}
-              state={{
-                url: params.row._links.self.href,
-                iconUrl: params.row._links.icon.href,
-                id: params.row.id,
-                name: params.row.name,
-              }}
-              className="link"
-            >
+            <Link to={`/photo-sessions/${params.row.name}`} className="link">
               <div className="button">Edit</div>
             </Link>
             <div

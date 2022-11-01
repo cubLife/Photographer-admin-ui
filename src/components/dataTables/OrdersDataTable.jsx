@@ -32,16 +32,10 @@ const OrdersDataTable = () => {
       headerName: "Action",
       width: 130,
       renderCell: (params) => {
+        sessionStorage.setItem("editOrderUrl", params.row._links.self.href);
         return (
           <div className="cellAction">
-            <Link
-              to={`/orders/${params.row.id}`}
-              state={{
-                url: params.row._links.self.href,
-                id: params.row.id,
-              }}
-              className="link"
-            >
+            <Link to={`/orders/${params.row.id}`} className="link">
               <div className="button">Edit</div>
             </Link>
             <div

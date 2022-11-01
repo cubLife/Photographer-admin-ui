@@ -1,13 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import "./edit.scss";
 
 const Edit = ({ inputs, title }) => {
-  const location = useLocation();
-  const { url } = location.state;
+  const url = sessionStorage.getItem("editUrl");
   console.log("url " + url);
   console.log("inputs " + title);
 

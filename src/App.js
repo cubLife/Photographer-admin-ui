@@ -19,7 +19,7 @@ import NewPhotoSession from "./pages/new/NewPhotoSession";
 import EditPhotoSession from "./pages/edit/EditPhotoSession";
 import SinglePhotoSession from "./pages/single/singlePhotoSession/SinglePhotoSession";
 import NewPhotoAlbum from "./pages/new/NewPhotoAlbum";
-import keycloac from "./Keycloac";
+import keycloac from "./Keyckloak";
 import AppRouter from "./components/AppRouter";
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
     if (authenticated) {
       return (
         <div>
+          {/* <Home keycloak={keycloak} /> */}
           <AppRouter keycloak={keycloak} />
         </div>
       );

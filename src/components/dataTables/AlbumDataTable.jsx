@@ -14,17 +14,16 @@ const AlbumDataTable = ({ sessionId }) => {
       headerName: "Action",
       width: 130,
       renderCell: (params) => {
+        const viewData = {
+          albumId: params.row.id,
+          photosUrl: JSON.stringify(params.row._links),
+          name: params.row.name,
+        };
+        sessionStorage.setItem("singleAlbum", JSON.stringify(viewData));
+
         return (
           <div className="cellAction">
-            <Link
-              to={`/photo-albums/${params.row.id}`}
-              state={{
-                url: params.row._links,
-                albumId: params.row.id,
-                name: params.row.name,
-              }}
-              className="link"
-            >
+            <Link to={`/photo-albums/${params.row.name}`} className="link">
               <div className="button">view</div>
             </Link>
             <div

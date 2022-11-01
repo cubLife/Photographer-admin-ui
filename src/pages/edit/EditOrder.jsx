@@ -1,14 +1,12 @@
 import { Select } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import "./edit.scss";
 
 const EditOrder = ({ title }) => {
-  const location = useLocation();
-  const { url } = location.state;
+  const url = sessionStorage.getItem("editOrderUrl");
 
   const [formData, setFormData] = useState([]);
   const [sessionPackages, setSessionPackages] = useState([]);

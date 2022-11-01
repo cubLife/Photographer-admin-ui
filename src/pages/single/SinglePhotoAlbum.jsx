@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import AlbumPhotos from "../../components/photoAlbum/AlbumPhotos";
 import axios from "axios";
 
 const SinglePhotoAlbum = () => {
-  const location = useLocation();
-  const { url } = location.state;
-  const { albumId } = location.state;
-  const { name } = location.state;
-  console.log(name);
+  const storageData = JSON.parse(sessionStorage.getItem("singleAlbum"));
+  const photosUrl = JSON.parse(storageData.photosUrl);
+  const albumId = storageData.albumId;
+  const name = storageData.name;
   const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: response } = await axios.get(url.photos.href);
+        const { data: response } = await axios.get(photosUrl.photos.href);
         setData(response._embedded.photoDtoList);
       } catch (error) {
         console.error(error);

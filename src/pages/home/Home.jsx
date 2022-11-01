@@ -10,7 +10,6 @@ function Home() {
       <Sidebar />
       <div className="homeContainer">
         <div className="top">
-          <div className="leftContainer">left</div>
           <div className="rightContainer">
             <Calendar />
           </div>

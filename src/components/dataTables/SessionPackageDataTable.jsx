@@ -21,10 +21,12 @@ const SessionDataTable = () => {
       headerName: "Action",
       width: 130,
       renderCell: (params) => {
+        sessionStorage.setItem("editUrl", params.row._links.self.href);
+
         return (
           <div className="cellAction">
             <Link
-              to={`/photo-session-packages/${params.row.id}`}
+              to={`/photo-session-packages/${params.row.name}`}
               state={{
                 url: params.row._links.self.href,
                 id: params.row.id,

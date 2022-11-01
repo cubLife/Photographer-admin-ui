@@ -28,7 +28,7 @@ const PhotoWidget = ({ imageUrl, selfLink }) => {
     const data = new FormData();
     data.append("file", file);
     try {
-      await axios.put(selfLink, data);
+      await axios.put(selfLink, window.$headers, data);
       setTimeout(() => {
         setUploadedPercent(0);
       }, 1000);
