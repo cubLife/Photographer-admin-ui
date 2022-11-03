@@ -48,10 +48,9 @@ const CostumerDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(
-        `http://localhost:8081/api/costumers/${id}`,
-        window.$headers
-      );
+      await axios.delete(`http://localhost:8081/api/costumers/${id}`, {
+        headers: window.$token,
+      });
       setData(data.filter((item) => item.id !== id));
       getSuccessAlert();
     } catch (error) {
@@ -65,7 +64,9 @@ const CostumerDataTable = () => {
       try {
         const { data: response } = await axios.get(
           "http://localhost:8081/api/costumers/list",
-          window.$headers
+          {
+            headers: window.$token,
+          }
         );
         setData(response._embedded.costumerDtoList);
       } catch (error) {

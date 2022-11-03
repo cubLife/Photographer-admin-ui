@@ -29,11 +29,9 @@ const ProfileInformation = () => {
     const data = new FormData();
     data.append("file", file);
     try {
-      await axios.put(
-        "http://localhost:8081/api/avatar-images/1",
-        data,
-        window.$headers
-      );
+      await axios.put("http://localhost:8081/api/avatar-images/1", data, {
+        headers: window.$token,
+      });
       window.location.reload(false);
     } catch (error) {
       console.log(error);

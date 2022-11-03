@@ -53,7 +53,10 @@ const EditPhotoSession = ({ inputs, title }) => {
     const data = new FormData();
     data.append("file", file);
     try {
-      await axios.put(iconUrl, data, window.$headers, onProgress);
+      await axios.put(iconUrl, data, {
+        headers: window.$token,
+        onUploadProgress: onProgress,
+      });
       setTimeout(() => {
         setUploadedPercent(0);
       }, 1000);
@@ -69,16 +72,14 @@ const EditPhotoSession = ({ inputs, title }) => {
     }
   };
 
-  const onProgress = {
-    onUploadProgress: (progressEvent) => {
-      const { loaded, total } = progressEvent;
-      let percent = Math.floor((loaded * 100) / total);
-      console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+  const onProgress = (progressEvent) => {
+    const { loaded, total } = progressEvent;
+    let percent = Math.floor((loaded * 100) / total);
+    console.log(`${loaded}kb of ${total}kb | ${percent}%`);
 
-      if (percent < 100) {
-        setUploadedPercent(percent);
-      }
-    },
+    if (percent < 100) {
+      setUploadedPercent(percent);
+    }
   };
 
   return (

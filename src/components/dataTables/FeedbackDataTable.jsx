@@ -46,10 +46,9 @@ const FeedbackDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(
-        `http://localhost:8081/api/feedbacks/${id}`,
-        window.$headers
-      );
+      await axios.delete(`http://localhost:8081/api/feedbacks/${id}`, {
+        headers: window.$token,
+      });
       setData(data.filter((item) => item.id !== id));
       getSuccessAlert();
     } catch (error) {

@@ -8,7 +8,9 @@ import Progress from "../progressBar/Progress";
 const PhotoWidget = ({ imageUrl, selfLink }) => {
   const onDelete = async () => {
     try {
-      await axios.delete(selfLink, window.$headers);
+      await axios.delete(selfLink, {
+        headers: window.$token,
+      });
       window.location.reload(false);
     } catch (error) {
       console.log(error);
@@ -28,7 +30,10 @@ const PhotoWidget = ({ imageUrl, selfLink }) => {
     const data = new FormData();
     data.append("file", file);
     try {
-      await axios.put(selfLink, window.$headers, data);
+      await axios.put(selfLink, data, {
+        headers: window.$token,
+        onUploadProgress: onProgress,
+      });
       setTimeout(() => {
         setUploadedPercent(0);
       }, 1000);
@@ -38,16 +43,14 @@ const PhotoWidget = ({ imageUrl, selfLink }) => {
     }
   };
 
-  const onProgress = {
-    onUploadProgress: (progressEvent) => {
-      const { loaded, total } = progressEvent;
-      let percent = Math.floor((loaded * 100) / total);
-      console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+  const onProgress = (progressEvent) => {
+    const { loaded, total } = progressEvent;
+    let percent = Math.floor((loaded * 100) / total);
+    console.log(`${loaded}kb of ${total}kb | ${percent}%`);
 
-      if (percent < 100) {
-        setUploadedPercent(percent);
-      }
-    },
+    if (percent < 100) {
+      setUploadedPercent(percent);
+    }
   };
 
   return (

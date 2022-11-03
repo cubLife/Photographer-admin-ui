@@ -20,10 +20,8 @@ import SinglePhotoSession from "../pages/single/singlePhotoSession/SinglePhotoSe
 import NewPhotoAlbum from "../pages/new/NewPhotoAlbum";
 
 const AppRouter = ({ keycloak }) => {
-  window.$headers = {
-    headers: {
-      Authorization: "Bearer " + keycloak.token,
-    },
+  window.$token = {
+    Authorization: "Bearer " + keycloak.token,
   };
 
   return (

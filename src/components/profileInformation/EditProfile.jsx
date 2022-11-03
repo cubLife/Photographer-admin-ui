@@ -19,7 +19,6 @@ const EditProfile = ({
 }) => {
   const [data, setData] = useState("");
   const [openAlert, setOpenAlert] = useState(false);
-  console.log(data);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
   const [errorResponse, setErrorResponse] = useState({});
@@ -40,7 +39,9 @@ const EditProfile = ({
     const formData = new FormData();
     formData.append(requestParam, data);
     try {
-      await axios.put(editUrl, formData, window.$headers);
+      await axios.put(editUrl, formData, {
+        headers: window.$token,
+      });
       setOpenAlert(true);
       setMessage("Success!!!");
       setSeverity("success");

@@ -6,7 +6,7 @@ import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import Progress from "../../components/progressBar/Progress";
 
-const NewPhotoSession = ({ inputs, title, url, headers }) => {
+const NewPhotoSession = ({ inputs, title, url }) => {
   const [data, setData] = useState({});
   const [file, setFile] = useState();
   const [uploadedPercent, setUploadedPercent] = useState(0);
@@ -26,10 +26,11 @@ const NewPhotoSession = ({ inputs, title, url, headers }) => {
   };
 
   const handleSubmit = async (event) => {
-    console.log(headers);
     event.preventDefault();
     try {
-      const { data: response } = await axios.post(url, data, window.$headers);
+      const { data: response } = await axios.post(url, data, {
+        headers: window.$token,
+      });
       if (file) {
         addIcon(response.id);
       } else {
@@ -51,12 +52,10 @@ const NewPhotoSession = ({ inputs, title, url, headers }) => {
     data.append("file", file);
     data.append("sessionId", id);
     try {
-      await axios.post(
-        "http://localhost:8081/api/photo-session-icons",
-        data,
-        window.$headers,
-        onProgress
-      );
+      await axios.post("http://localhost:8081/api/photo-session-icons", data, {
+        headers: window.$token,
+        onUploadProgress: onProgress,
+      });
       setTimeout(() => {
         setUploadedPercent(0);
       }, 1000);
@@ -72,16 +71,14 @@ const NewPhotoSession = ({ inputs, title, url, headers }) => {
     }
   };
 
-  const onProgress = {
-    onUploadProgress: (progressEvent) => {
-      const { loaded, total } = progressEvent;
-      let percent = Math.floor((loaded * 100) / total);
-      console.log(`${loaded}kb of ${total}kb | ${percent}%`);
+  const onProgress = (progressEvent) => {
+    const { loaded, total } = progressEvent;
+    let percent = Math.floor((loaded * 100) / total);
+    console.log(`${loaded}kb of ${total}kb | ${percent}%`);
 
-      if (percent < 100) {
-        setUploadedPercent(percent);
-      }
-    },
+    if (percent < 100) {
+      setUploadedPercent(percent);
+    }
   };
 
   return (

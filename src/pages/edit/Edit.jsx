@@ -25,7 +25,9 @@ const Edit = ({ inputs, title }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(url, data, window.$headers);
+      await axios.put(url, data, {
+        headers: window.$token,
+      });
       setOpen(true);
       setMessage("Success!!!");
       setSeverity("success");

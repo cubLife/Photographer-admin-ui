@@ -15,6 +15,7 @@ const AlbumPhotos = ({ photos, rootUrl, albumId }) => {
             alignItems="center"
             spacing="2"
           >
+            <AddNewPhoto url={rootUrl} albumId={albumId} />
             {photos.map((photo) => (
               <Grid key={photo.id} item>
                 <PhotoWidget
@@ -23,7 +24,6 @@ const AlbumPhotos = ({ photos, rootUrl, albumId }) => {
                 />
               </Grid>
             ))}
-            <AddNewPhoto url={rootUrl} albumId={albumId} />
           </Grid>
         </Grid>
       </Grid>

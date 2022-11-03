@@ -22,7 +22,9 @@ const OrderList = () => {
       try {
         const { data: response } = await axios.get(
           "http://localhost:8081/api/orders/order-status/new/list",
-          window.$headers
+          {
+            headers: window.$token,
+          }
         );
         setData(response._embedded.orderDtoList);
       } catch (error) {

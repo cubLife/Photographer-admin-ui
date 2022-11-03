@@ -16,7 +16,9 @@ const Calendar = () => {
       try {
         const { data: response } = await axios.get(
           "http://localhost:8081/api/orders/order-status/approved/list",
-          window.$headers
+          {
+            headers: window.$token,
+          }
         );
         setOrders(response._embedded.orderDtoList);
       } catch (error) {

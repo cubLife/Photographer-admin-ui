@@ -24,7 +24,9 @@ const NewPhotoAlbum = ({ inputs, title, url }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(url, data, window.$headers);
+      await axios.post(url, data, {
+        headers: window.$token,
+      });
       setOpen(true);
       setMessage("Success!!!");
       setSeverity("success");

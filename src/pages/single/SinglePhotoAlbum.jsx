@@ -33,7 +33,7 @@ const SinglePhotoAlbum = () => {
         <AlbumPhotos
           photos={data}
           albumId={albumId}
-          rootUrl="http://localhost:8081/api/photos"
+          rootUrl="http://localhost:8081/api/photos/list"
         />
       </div>
     </div>

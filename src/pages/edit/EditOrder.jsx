@@ -32,7 +32,9 @@ const EditOrder = ({ title }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(url, formData, window.$headers);
+      await axios.put(url, formData, {
+        headers: window.$token,
+      });
       setOpen(true);
       setMessage("Success!!!");
       setSeverity("success");
@@ -49,7 +51,9 @@ const EditOrder = ({ title }) => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const { data: response } = await axios.get(url, window.$headers);
+        const { data: response } = await axios.get(url, {
+          headers: window.$token,
+        });
         setOrder(response);
       } catch (error) {
         console.error(error);

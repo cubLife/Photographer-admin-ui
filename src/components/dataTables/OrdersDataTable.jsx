@@ -81,7 +81,9 @@ const OrdersDataTable = () => {
       try {
         const { data: response } = await axios.get(
           "http://localhost:8081/api/orders/list",
-          window.$headers
+          {
+            headers: window.$token,
+          }
         );
         setData(response._embedded.orderDtoList);
       } catch (error) {

@@ -70,10 +70,9 @@ const SessionDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(
-        `http://localhost:8081/api/photo-sessions/${id}`,
-        window.$headers
-      );
+      await axios.delete(`http://localhost:8081/api/photo-sessions/${id}`, {
+        headers: window.$token,
+      });
       getSuccessAlert();
 
       setData(data.filter((item) => item.id !== id));

@@ -1,9 +1,9 @@
 .item {
-  width: 20em;
-  height: 20em;
+  width: 10em;
+  height: 10em;
   -webkit-box-shadow: -5px 4px 26px 17px rgba(134, 141, 142, 0.26);
   box-shadow: -5px 4px 26px 17px rgba(134, 141, 142, 0.26);
-  margin: 20px;
+  margin: 10px;
   position: relative;
 
   .itemImg {
@@ -13,6 +13,7 @@
   }
 
   .buttons {
+    font-size: x-small;
     position: absolute;
     top: 0;
     right: 0;

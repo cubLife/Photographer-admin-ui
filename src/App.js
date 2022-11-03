@@ -38,7 +38,6 @@ function App() {
     if (authenticated) {
       return (
         <div>
-          {/* <Home keycloak={keycloak} /> */}
           <AppRouter keycloak={keycloak} />
         </div>
       );
