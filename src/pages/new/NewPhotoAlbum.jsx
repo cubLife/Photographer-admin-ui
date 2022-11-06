@@ -6,8 +6,7 @@ import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import { useLocation } from "react-router-dom";
 
 const NewPhotoAlbum = ({ inputs, title, url }) => {
-  const location = useLocation();
-  const { id } = location.state;
+  const id = sessionStorage.getItem("sessionId");
   const [data, setData] = useState({ photoSessionId: id });
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");

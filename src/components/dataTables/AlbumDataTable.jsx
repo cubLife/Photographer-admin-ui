@@ -91,11 +91,7 @@ const AlbumDataTable = ({ sessionId }) => {
   return (
     <div className="dataTable">
       <h1>Photo Albums</h1>
-      <AddNewItem
-        newLink="/photo-albums/new"
-        name="Photo album"
-        id={sessionId}
-      />
+      <AddNewItem newLink="/photo-albums/new" name="Photo album" />
       <DataGrid
         rows={data}
         columns={columns.concat(actionColumn)}
