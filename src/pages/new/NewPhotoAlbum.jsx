@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import axios from "axios";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
-import { useLocation } from "react-router-dom";
 
 const NewPhotoAlbum = ({ inputs, title, url }) => {
   const id = sessionStorage.getItem("sessionId");

@@ -6,11 +6,8 @@ import "./edit.scss";
 
 const Edit = ({ inputs, title }) => {
   const url = sessionStorage.getItem("editUrl");
-  console.log("url " + url);
-  console.log("inputs " + title);
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");

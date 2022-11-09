@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
@@ -11,7 +10,6 @@ const EditPhotoSession = ({ inputs, title }) => {
   const storageData = JSON.parse(sessionStorage.getItem("editData"));
   const url = storageData.url;
   const iconUrl = storageData.iconUrl;
-  const id = storageData.id;
 
   const [data, setData] = useState([]);
   const [file, setFile] = useState();

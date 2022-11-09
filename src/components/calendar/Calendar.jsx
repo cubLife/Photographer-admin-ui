@@ -5,12 +5,6 @@ import axios from "axios";
 const Calendar = () => {
   const [orders, setOrders] = useState([]);
 
-  const getFormData = () => {
-    const formData = new FormData();
-    formData.append("status", "approved");
-    return formData;
-  };
-
   useEffect(() => {
     const fetchData = async () => {
       try {

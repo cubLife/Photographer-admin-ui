@@ -3,8 +3,6 @@ import "./dataTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { costumerColumns } from "../../DataTableSource";
 import axios from "axios";
-import AddNewItem from "../addNewItem/AddNewItem";
-import { Link } from "react-router-dom";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 
 const CostumerDataTable = () => {
@@ -75,7 +73,6 @@ const CostumerDataTable = () => {
         setData({});
       }
     };
-
     fetchData();
   }, []);
 

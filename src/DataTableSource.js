@@ -1,5 +1,5 @@
 import React from "react";
-import noIcon from "../src/no-image-icon.jpg";
+
 //costumer columns
 export const costumerColumns = [
   { field: "id", headerName: "ID", width: 70 },

@@ -3,13 +3,11 @@ import "./dataTable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { orderColumns } from "../../DataTableSource";
 import axios from "axios";
-import AddNewItem from "../addNewItem/AddNewItem";
 import { Link } from "react-router-dom";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 
 const OrdersDataTable = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");

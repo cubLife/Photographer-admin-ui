@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import { useLocation } from "react-router-dom";

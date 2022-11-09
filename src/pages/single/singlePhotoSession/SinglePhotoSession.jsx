@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import React from "react";
 import AlbumDataTable from "../../../components/dataTables/AlbumDataTable";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import "./singlePhotoSession.scss";

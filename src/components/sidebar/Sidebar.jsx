@@ -1,7 +1,6 @@
 import React from "react";
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import CollectionsIcon from "@mui/icons-material/Collections";
 import LocalSeeOutlinedIcon from "@mui/icons-material/LocalSeeOutlined";
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
 import RepeatOutlinedIcon from "@mui/icons-material/RepeatOutlined";
@@ -34,12 +33,6 @@ const Sidebar = () => {
               <span>Costumers</span>
             </li>
           </Link>
-          {/* <Link to="/photo-albums" style={{ textDecoration: "none" }}>
-            <li>
-              <CollectionsIcon className="icon" />
-              <span>Photo Albums</span>
-            </li>
-          </Link> */}
           <Link to="/photo-sessions" style={{ textDecoration: "none" }}>
             <li>
               <LocalSeeOutlinedIcon className="icon" />

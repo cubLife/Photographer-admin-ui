@@ -60,7 +60,6 @@ const PhotoWidget = ({ imageUrl, selfLink }) => {
           <div onClick={() => setIsOpen(true)} className="editButton">
             Edit
           </div>
-
           <div onClick={onDelete} className="deleteButton">
             Delete
           </div>

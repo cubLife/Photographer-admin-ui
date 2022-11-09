@@ -70,7 +70,6 @@ const FeedbackDataTable = () => {
         setData({});
       }
     };
-
     fetchData();
   }, []);
 

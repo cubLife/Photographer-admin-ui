@@ -7,7 +7,7 @@ import AddNewItem from "../addNewItem/AddNewItem";
 import { Link } from "react-router-dom";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 
-const AlbumDataTable = ({ sessionId }) => {
+const AlbumDataTable = () => {
   const actionColumn = [
     {
       field: "action",

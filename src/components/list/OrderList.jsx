@@ -8,14 +8,12 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { renderActionsCell } from "@mui/x-data-grid";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./list.scss";
 
 const OrderList = () => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,7 +27,6 @@ const OrderList = () => {
         setData(response._embedded.orderDtoList);
       } catch (error) {
         console.error(error);
-        setLoading(false);
       }
     };
     fetchData();

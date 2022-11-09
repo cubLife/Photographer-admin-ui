@@ -1,4 +1,3 @@
-import { Select } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -86,46 +85,6 @@ const EditOrder = ({ title }) => {
         </div>
         <div className="bottom">
           <form onSubmit={handleSubmit}>
-            {/* <div className="formInput">
-              <label>First name</label>
-              <input
-                type="text"
-                id="firstName"
-                value={order.costumerFirstName}
-                onChange={handleChange}
-                disabled
-              ></input>
-            </div>
-            <div className="formInput">
-              <label>Last name</label>
-              <input
-                type="text"
-                id="Last Name"
-                value={order.costumerLastName}
-                onChange={handleChange}
-                disabled
-              ></input>
-            </div>
-            <div className="formInput">
-              <label>Email</label>
-              <input
-                type="text"
-                id="costumerEmail"
-                value={order.costumerEmail}
-                onChange={handleChange}
-                disabled
-              ></input>
-            </div>
-            <div className="formInput">
-              <label>Phone</label>
-              <input
-                type="text"
-                id="costumerPhone"
-                value={order.costumerPhone}
-                onChange={handleChange}
-                disabled
-              ></input>
-            </div> */}
             <div className="formInput">
               <label>Start time</label>
               <input

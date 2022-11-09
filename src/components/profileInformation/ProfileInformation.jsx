@@ -13,7 +13,6 @@ import Progress from "../progressBar/Progress";
 
 const ProfileInformation = () => {
   const [photographer, setPhotographer] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const [file, setFile] = useState();
   const [uploadedPercent, setUploadedPercent] = useState(0);
@@ -51,7 +50,6 @@ const ProfileInformation = () => {
         setPhotographer(response);
       } catch (error) {
         console.error(error);
-        setLoading(false);
       }
     };
     fetchData();

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
-import { useLocation } from "react-router";
 import AlbumPhotos from "../../components/photoAlbum/AlbumPhotos";
 import axios from "axios";
 

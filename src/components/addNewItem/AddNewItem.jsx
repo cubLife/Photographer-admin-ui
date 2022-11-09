@@ -13,5 +13,4 @@ const AddNewItem = ({ name, newLink, id }) => {
     </div>
   );
 };
-
 export default AddNewItem;

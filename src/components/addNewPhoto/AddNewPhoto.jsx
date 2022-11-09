@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
@@ -92,7 +92,6 @@ const AddNewPhoto = ({ url, albumId }) => {
                 />
               ))}
           </div>
-          {/* </div> */}
         </Modal.Body>
       </Modal>
     </div>
