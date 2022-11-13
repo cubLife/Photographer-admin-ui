@@ -10,7 +10,6 @@ import SnackbarAlert from "../snackbar/SnackbarAlert";
 const SessionDataTable = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [columns, setColumns] = useState([]);
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
@@ -21,8 +20,6 @@ const SessionDataTable = () => {
       headerName: "Action",
       width: 130,
       renderCell: (params) => {
-        sessionStorage.setItem("editUrl", params.row._links.self.href);
-
         return (
           <div className="cellAction">
             <Link
@@ -63,10 +60,10 @@ const SessionDataTable = () => {
 
   const onclickDelete = async (url, id) => {
     try {
-      await axios.delete(url, window.$headers);
-      console.log(url);
+      await axios.delete(url, {
+        headers: window.$token,
+      });
       getSuccessAlert();
-
       setData(data.filter((item) => item.id !== id));
     } catch (error) {
       console.log(error);

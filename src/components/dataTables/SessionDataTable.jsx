@@ -4,7 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { photoSessionColumns } from "../../DataTableSource";
 import axios from "axios";
 import AddNewItem from "../addNewItem/AddNewItem";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 
 const SessionDataTable = () => {
@@ -21,27 +21,26 @@ const SessionDataTable = () => {
       headerName: "Action",
       width: 180,
       renderCell: (params) => {
-        sessionStorage.setItem("sessionId", params.row.id);
-
-        const editData = {
-          url: params.row._links.self.href,
-          iconUrl: params.row._links.icon.href,
-          id: params.row.id,
-          name: params.row.name,
-        };
-
-        sessionStorage.setItem("editData", JSON.stringify(editData));
-
         return (
           <div className="cellAction">
-            <Link
+            <NavLink
               key={params.row.id}
               to={`/photo-sessions/view/${params.row.name}`}
+              state={params.row.id}
               className="link"
             >
               <div className="button">View</div>
-            </Link>
-            <Link to={`/photo-sessions/${params.row.name}`} className="link">
+            </NavLink>
+            <Link
+              to={`/photo-sessions/${params.row.name}`}
+              state={{
+                url: params.row._links.self.href,
+                iconUrl: params.row._links.icon.href,
+                id: params.row.id,
+                name: params.row.name,
+              }}
+              className="link"
+            >
               <div className="button">Edit</div>
             </Link>
             <div

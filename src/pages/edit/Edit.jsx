@@ -1,10 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import "./edit.scss";
 
 const Edit = ({ inputs, title }) => {
+  const location = useLocation();
+  const locationState = location.state?.url;
+
+  if (locationState) {
+    sessionStorage.setItem("editUrl", locationState);
+  }
+
   const url = sessionStorage.getItem("editUrl");
 
   const [data, setData] = useState([]);

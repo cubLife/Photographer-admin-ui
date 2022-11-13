@@ -3,9 +3,17 @@ import "./single.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import AlbumPhotos from "../../components/photoAlbum/AlbumPhotos";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const SinglePhotoAlbum = () => {
-  const storageData = JSON.parse(sessionStorage.getItem("singleAlbum"));
+  const location = useLocation();
+  const state = location.state;
+
+  if (state) {
+    sessionStorage.setItem("state", JSON.stringify(state));
+  }
+
+  const storageData = JSON.parse(sessionStorage.getItem("state"));
   const photosUrl = JSON.parse(storageData.photosUrl);
   const albumId = storageData.albumId;
   const name = storageData.name;

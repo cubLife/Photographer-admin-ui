@@ -5,8 +5,14 @@ import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import AddPhotoAlternateOutlinedIcon from "@mui/icons-material/AddPhotoAlternateOutlined";
 import "./edit.scss";
 import Progress from "../../components/progressBar/Progress";
+import { useLocation } from "react-router-dom";
 
 const EditPhotoSession = ({ inputs, title }) => {
+  const location = useLocation();
+  const editData = location.state;
+  if (editData) {
+    sessionStorage.setItem("editData", JSON.stringify(editData));
+  }
   const storageData = JSON.parse(sessionStorage.getItem("editData"));
   const url = storageData.url;
   const iconUrl = storageData.iconUrl;
@@ -32,7 +38,9 @@ const EditPhotoSession = ({ inputs, title }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(url, data, window.$headers);
+      await axios.put(url, data, {
+        headers: window.$token,
+      });
       setOpen(true);
       setMessage("Success!!!");
       setSeverity("success");

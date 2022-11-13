@@ -1,10 +1,18 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
 import "./edit.scss";
 
 const EditOrder = ({ title }) => {
+  const location = useLocation();
+  const locationState = location.state?.editOrderUrl;
+
+  if (locationState) {
+    sessionStorage.setItem("editOrderUrl", locationState);
+  }
+
   const url = sessionStorage.getItem("editOrderUrl");
 
   const [formData, setFormData] = useState([]);

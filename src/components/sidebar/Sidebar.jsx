@@ -45,12 +45,6 @@ const Sidebar = () => {
               <span>Session package</span>
             </li>
           </Link>
-          <Link to="/carousel-photos" style={{ textDecoration: "none" }}>
-            <li>
-              <RepeatOutlinedIcon className="icon" />
-              <span>Carousel photos</span>
-            </li>
-          </Link>
           <Link to="/orders" style={{ textDecoration: "none" }}>
             <li>
               <CreditCardOutlinedIcon className="icon" />

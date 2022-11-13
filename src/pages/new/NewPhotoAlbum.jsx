@@ -3,8 +3,14 @@ import "./new.scss";
 import Sidebar from "../../components/sidebar/Sidebar.jsx";
 import axios from "axios";
 import SnackbarAlert from "../../components/snackbar/SnackbarAlert";
+import { useLocation } from "react-router-dom";
 
 const NewPhotoAlbum = ({ inputs, title, url }) => {
+  const location = useLocation();
+  const sessionId = location.state?.id;
+  if (sessionId) {
+    sessionStorage.setItem("sessionId", sessionId);
+  }
   const id = sessionStorage.getItem("sessionId");
   const [data, setData] = useState({ photoSessionId: id });
   const [open, setOpen] = useState(false);

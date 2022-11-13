@@ -7,23 +7,24 @@ import AddNewItem from "../addNewItem/AddNewItem";
 import { Link } from "react-router-dom";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
 
-const AlbumDataTable = () => {
+const AlbumDataTable = ({ sessionId }) => {
   const actionColumn = [
     {
       field: "action",
       headerName: "Action",
       width: 130,
       renderCell: (params) => {
-        const viewData = {
-          albumId: params.row.id,
-          photosUrl: JSON.stringify(params.row._links),
-          name: params.row.name,
-        };
-        sessionStorage.setItem("singleAlbum", JSON.stringify(viewData));
-
         return (
           <div className="cellAction">
-            <Link to={`/photo-albums/${params.row.name}`} className="link">
+            <Link
+              to={`/photo-albums/${params.row.name}`}
+              state={{
+                albumId: params.row.id,
+                photosUrl: JSON.stringify(params.row._links),
+                name: params.row.name,
+              }}
+              className="link"
+            >
               <div className="button">view</div>
             </Link>
             <div
@@ -74,7 +75,7 @@ const AlbumDataTable = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/photo-albums/list"
+          `http://localhost:8081/api/photo-albums/session-id/${sessionId}/list`
         );
         setData(response._embedded.photoAlbumDtoList);
         setColumns(photoAlbumColumns);
@@ -91,7 +92,11 @@ const AlbumDataTable = () => {
   return (
     <div className="dataTable">
       <h1>Photo Albums</h1>
-      <AddNewItem newLink="/photo-albums/new" name="Photo album" />
+      <AddNewItem
+        newLink="/photo-albums/new"
+        name="Photo album"
+        id={sessionId}
+      />
       <DataGrid
         rows={data}
         columns={columns.concat(actionColumn)}

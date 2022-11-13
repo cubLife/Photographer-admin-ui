@@ -11,7 +11,6 @@ const SnackbarAlert = ({ severity, message, open, setOpen }) => {
     <Snackbar
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
       open={open}
-      autoHideDuration={6000}
       onClose={() => setOpen(false)}
     >
       <Alert
