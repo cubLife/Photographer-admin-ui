@@ -18,6 +18,7 @@ const SinglePhotoAlbum = () => {
   const albumId = storageData.albumId;
   const name = storageData.name;
   const [data, setData] = useState([]);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +41,7 @@ const SinglePhotoAlbum = () => {
         <AlbumPhotos
           photos={data}
           albumId={albumId}
-          rootUrl="http://localhost:8081/api/photos/list"
+          rootUrl={`${BASE_URL}/photos/list`}
         />
       </div>
     </div>

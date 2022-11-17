@@ -45,6 +45,7 @@ const AlbumDataTable = ({ sessionId }) => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const getErrorAlert = () => {
     setOpenAlert(true);
@@ -60,7 +61,7 @@ const AlbumDataTable = ({ sessionId }) => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/api/photo-albums/${id}`, {
+      await axios.delete(`${BASE_URL}/photo-albums/${id}`, {
         headers: window.$token,
       });
       setData(data.filter((item) => item.id !== id));
@@ -75,7 +76,7 @@ const AlbumDataTable = ({ sessionId }) => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          `http://localhost:8081/api/photo-albums/session-id/${sessionId}/list`
+          `${BASE_URL}/photo-albums/session-id/${sessionId}/list`
         );
         setData(response._embedded.photoAlbumDtoList);
         setColumns(photoAlbumColumns);

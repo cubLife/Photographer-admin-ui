@@ -31,6 +31,7 @@ const FeedbackDataTable = () => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const getErrorAlert = () => {
     setOpenAlert(true);
@@ -46,7 +47,7 @@ const FeedbackDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/api/feedbacks/${id}`, {
+      await axios.delete(`${BASE_URL}/feedbacks/${id}`, {
         headers: window.$token,
       });
       setData(data.filter((item) => item.id !== id));
@@ -61,7 +62,7 @@ const FeedbackDataTable = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/feedbacks/list"
+          `${BASE_URL}/feedbacks/list`
         );
         setData(response._embedded.costumerFeedbackDtoList);
       } catch (error) {

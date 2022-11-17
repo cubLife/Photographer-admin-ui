@@ -11,6 +11,7 @@ const OrdersDataTable = () => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const actionColumn = [
     {
@@ -80,12 +81,9 @@ const OrdersDataTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data: response } = await axios.get(
-          "http://localhost:8081/api/orders/list",
-          {
-            headers: window.$token,
-          }
-        );
+        const { data: response } = await axios.get(`${baseUrl}/orders/list`, {
+          headers: window.$token,
+        });
         setData(response._embedded.orderDtoList);
       } catch (error) {
         console.error(error);

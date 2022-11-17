@@ -14,6 +14,7 @@ const SessionDataTable = () => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const actionColumn = [
     {
@@ -69,7 +70,7 @@ const SessionDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/api/photo-sessions/${id}`, {
+      await axios.delete(`${BASE_URL}/photo-sessions/${id}`, {
         headers: window.$token,
       });
       getSuccessAlert();
@@ -85,7 +86,7 @@ const SessionDataTable = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/photo-sessions/list"
+          `${BASE_URL}/photo-sessions/list`
         );
         setData(response._embedded.photoSessionDtoList);
         setColumns(photoSessionColumns);

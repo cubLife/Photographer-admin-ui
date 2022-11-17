@@ -6,12 +6,13 @@ import AlbumPhotos from "../../components/photoAlbum/AlbumPhotos";
 
 const CarouselPhotosList = () => {
   const [data, setData] = useState([]);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/carousel-images/list"
+          `${BASE_URL}/carousel-images/list`
         );
         setData(response._embedded.carouselImageDtoList);
       } catch (error) {
@@ -29,7 +30,7 @@ const CarouselPhotosList = () => {
         <h1 className="title">Carousel Images</h1>
         <AlbumPhotos
           photos={data}
-          rootUrl="http://localhost:8081/api/carousel-images"
+          rootUrl={`${BASE_URL}/api/carousel-images`}
         />
       </div>
     </div>

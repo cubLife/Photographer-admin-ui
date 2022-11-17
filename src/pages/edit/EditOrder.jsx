@@ -14,6 +14,7 @@ const EditOrder = ({ title }) => {
   }
 
   const url = sessionStorage.getItem("editOrderUrl");
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const [formData, setFormData] = useState([]);
   const [sessionPackages, setSessionPackages] = useState([]);
@@ -74,7 +75,7 @@ const EditOrder = ({ title }) => {
     const fetchSessionPackages = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/photo-session-packages/list"
+          `${baseUrl}/photo-session-packages/list`
         );
         setSessionPackages(response._embedded.photoSessionPackageDtoList);
       } catch (error) {

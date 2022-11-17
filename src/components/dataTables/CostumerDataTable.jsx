@@ -4,6 +4,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { costumerColumns } from "../../DataTableSource";
 import axios from "axios";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
+import { baseZIndex } from "devextreme/ui/overlay";
 
 const CostumerDataTable = () => {
   const actionColumn = [
@@ -31,6 +32,7 @@ const CostumerDataTable = () => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const getErrorAlert = () => {
     setOpenAlert(true);
@@ -46,7 +48,7 @@ const CostumerDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:8081/api/costumers/${id}`, {
+      await axios.delete(`${baseZIndex}/costumers/${id}`, {
         headers: window.$token,
       });
       setData(data.filter((item) => item.id !== id));
@@ -61,7 +63,7 @@ const CostumerDataTable = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/costumers/list",
+          `${BASE_URL}/costumers/list`,
           {
             headers: window.$token,
           }

@@ -14,6 +14,7 @@ const NewPhotoSession = ({ inputs, title, url }) => {
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
   const [errorResponse, setErrorResponse] = useState({});
+  const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const handleChange = (event) => {
     const id = event.target.id;
@@ -52,7 +53,7 @@ const NewPhotoSession = ({ inputs, title, url }) => {
     data.append("file", file);
     data.append("sessionId", id);
     try {
-      await axios.post("http://localhost:8081/api/photo-session-icons", data, {
+      await axios.post(`${baseUrl}/photo-session-icons`, data, {
         headers: window.$token,
         onUploadProgress: onProgress,
       });

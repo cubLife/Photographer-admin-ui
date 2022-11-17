@@ -22,13 +22,14 @@ const ProfileInformation = () => {
   const [editUrl, setEditUrl] = useState("");
   const [requestParam, setRequestParam] = useState("");
   const [value, setValue] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData();
     data.append("file", file);
     try {
-      await axios.put("http://localhost:8081/api/avatar-images/1", data, {
+      await axios.put(`${BASE_URL}/avatar-images/1`, data, {
         headers: window.$token,
       });
       window.location.reload(false);
@@ -45,7 +46,7 @@ const ProfileInformation = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/photographers/1"
+          `${BASE_URL}/photographers/1`
         );
         setPhotographer(response);
       } catch (error) {
@@ -71,7 +72,7 @@ const ProfileInformation = () => {
           <div className="user">
             <img
               onClick={() => setIsOpen(true)}
-              src="http://localhost:8081/api/avatar-images/photographer-id/1/picture"
+              src={`${BASE_URL}/avatar-images/photographer-id/1/picture`}
               alt="User avatar"
               className="userImg"
             />
@@ -84,7 +85,7 @@ const ProfileInformation = () => {
                     onClick(
                       true,
                       editEmail,
-                      "http://localhost:8081/api/photographers/1/edit-email",
+                      `${BASE_URL}/photographers/1/edit-email`,
                       "email",
                       photographer.email
                     )
@@ -102,7 +103,7 @@ const ProfileInformation = () => {
                     onClick(
                       true,
                       editPhone,
-                      "http://localhost:8081/api/photographers/1/edit-phone",
+                      `${BASE_URL}/photographers/1/edit-phone`,
                       "phone",
                       photographer.phone
                     )
@@ -123,7 +124,7 @@ const ProfileInformation = () => {
               onClick(
                 true,
                 editAboutMyself,
-                "http://localhost:8081/api/photographers/1/edit-about",
+                `${BASE_URL}/photographers/1/edit-about`,
                 "aboutMyself",
                 photographer.aboutMyself
               )

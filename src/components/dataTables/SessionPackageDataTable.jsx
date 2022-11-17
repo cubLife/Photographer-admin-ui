@@ -13,6 +13,7 @@ const SessionDataTable = () => {
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
   const [severity, setSeverity] = useState("");
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   const actionColumn = [
     {
@@ -75,7 +76,7 @@ const SessionDataTable = () => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/photo-session-packages/list"
+          `${BASE_URL}/photo-session-packages/list`
         );
         setData(response._embedded.photoSessionPackageDtoList);
       } catch (error) {

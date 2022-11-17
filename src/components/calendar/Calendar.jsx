@@ -4,12 +4,13 @@ import { daySource, weekSource, monthSource } from "../../CalendarSource";
 import axios from "axios";
 const Calendar = () => {
   const [orders, setOrders] = useState([]);
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const { data: response } = await axios.get(
-          "http://localhost:8081/api/orders/order-status/approved/list",
+          `${BASE_URL}/orders/order-status/approved/list`,
           {
             headers: window.$token,
           }
