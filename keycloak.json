@@ -1,6 +1,6 @@
 {
   "realm": "Photographer",
-  "auth-server-url": "http://localhost:8080/",
+  "auth-server-url": "https://sequre.na-photo.pl/auth/",
   "ssl-required": "external",
   "resource": "photographer-admin",
   "public-client": true,
