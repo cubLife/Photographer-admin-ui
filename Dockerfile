@@ -14,4 +14,4 @@ COPY . .
 
 RUN npm run build
 
-CMD [ "npx", " serve -s build" ]
+CMD [ "npx", "serve","build" ]
