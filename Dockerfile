@@ -1,14 +1,17 @@
-FROM node:alpine as build
+FROM node:alpine
+
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
+
+EXPOSE 3000
+
 COPY package*.json ./
-RUN yarn install --frozen-lockfile
-COPY . ./
+
+COPY yarn.lock ./
+
+RUN  yarn install
+
+COPY . .
+
 RUN npm run build
 
-
-FROM nginx:stable-alpine
-COPY --from=build /app/build /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD [ "npx", "serve", "build" ]
