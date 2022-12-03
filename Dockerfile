@@ -14,4 +14,4 @@ COPY . .
 
 RUN npm run build
 
-CMD [ "npx", "serve", "build" ]
+CMD [ "npm", " install -g serve serve -s build" ]
