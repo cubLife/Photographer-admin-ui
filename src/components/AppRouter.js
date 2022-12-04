@@ -20,6 +20,7 @@ import SinglePhotoSession from "../pages/single/singlePhotoSession/SinglePhotoSe
 import NewPhotoAlbum from "../pages/new/NewPhotoAlbum";
 
 const AppRouter = ({ keycloak }) => {
+  const BASE_URL = process.env.REACT_APP_BASE_URL;
   window.$token = {
     Authorization: "Bearer " + keycloak.token,
   };
@@ -43,7 +44,7 @@ const AppRouter = ({ keycloak }) => {
                   <NewPhotoAlbum
                     inputs={photoAlbumInputs}
                     title="Add new Photo album"
-                    url="http://localhost:8081/api/photo-albums"
+                    url={`${BASE_URL}/photo-albums`}
                   />
                 }
               />
@@ -69,7 +70,7 @@ const AppRouter = ({ keycloak }) => {
                   <NewPhotoSession
                     inputs={photoSessionsInputs}
                     title="Add new Photo session"
-                    url="http://localhost:8081/api/photo-sessions"
+                    url={`${BASE_URL}/photo-sessions`}
                   />
                 }
               />
@@ -91,7 +92,7 @@ const AppRouter = ({ keycloak }) => {
                   <New
                     inputs={photoSessionsPackageInputs}
                     title="Add new Photo session package"
-                    url="http://localhost:8081/api/photo-session-packages"
+                    url={`${BASE_URL}/photo-session-packages`}
                   />
                 }
               />
