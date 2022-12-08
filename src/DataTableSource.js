@@ -1,5 +1,6 @@
 import React from "react";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 //costumer columns
 export const costumerColumns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -30,10 +31,7 @@ export const photoAlbumColumns = [
         <div className="cellWithImg">
           <img
             className="cellImg"
-            src={
-              "http://localhost:8081/api/photos/first-image/photo-album/" +
-              params.row.id
-            }
+            src={`${BASE_URL}/photos/first-image/photo-album/${params.row.id}`}
             alt="img"
           />
           {params.row.name}
