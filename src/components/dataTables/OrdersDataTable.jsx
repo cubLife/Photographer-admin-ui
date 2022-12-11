@@ -68,7 +68,9 @@ const OrdersDataTable = () => {
 
   const onclickDelete = async (url, id) => {
     try {
-      await axios.delete(url, window.$headers);
+      await axios.delete(url, {
+        headers: window.$token,
+      });
       getSuccessAlert();
 
       setData(data.filter((item) => item.id !== id));
