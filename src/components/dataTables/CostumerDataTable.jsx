@@ -4,7 +4,6 @@ import { DataGrid } from "@mui/x-data-grid";
 import { costumerColumns } from "../../DataTableSource";
 import axios from "axios";
 import SnackbarAlert from "../snackbar/SnackbarAlert";
-import { baseZIndex } from "devextreme/ui/overlay";
 
 const CostumerDataTable = () => {
   const actionColumn = [
@@ -48,7 +47,7 @@ const CostumerDataTable = () => {
 
   const onclickDelete = async (id) => {
     try {
-      await axios.delete(`${baseZIndex}/costumers/${id}`, {
+      await axios.delete(`${BASE_URL}/costumers/${id}`, {
         headers: window.$token,
       });
       setData(data.filter((item) => item.id !== id));
