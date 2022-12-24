@@ -40,7 +40,6 @@ const AlbumDataTable = ({ sessionId }) => {
   ];
 
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [columns, setColumns] = useState([]);
   const [openAlert, setOpenAlert] = useState(false);
   const [message, setMessage] = useState("");
@@ -82,7 +81,6 @@ const AlbumDataTable = ({ sessionId }) => {
         setColumns(photoAlbumColumns);
       } catch (error) {
         console.error(error);
-        setLoading(false);
         setData({});
       }
     };

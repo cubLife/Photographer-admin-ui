@@ -18,6 +18,7 @@ const SinglePhotoAlbum = () => {
   const albumId = storageData.albumId;
   const name = storageData.name;
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const BASE_URL = process.env.REACT_APP_BASE_URL;
 
   useEffect(() => {
@@ -25,8 +26,10 @@ const SinglePhotoAlbum = () => {
       try {
         const { data: response } = await axios.get(photosUrl.photos.href);
         setData(response._embedded.photoDtoList);
+        setLoading(false);
       } catch (error) {
         console.error(error);
+        setLoading(false);
       }
     };
 
@@ -39,6 +42,7 @@ const SinglePhotoAlbum = () => {
       <div className="singleContainer">
         <h1 className="title">{`${name} Photo Album`}</h1>
         <AlbumPhotos
+          loading={loading}
           photos={data}
           albumId={albumId}
           rootUrl={`${BASE_URL}/photos/list`}

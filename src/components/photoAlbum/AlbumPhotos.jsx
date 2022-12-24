@@ -3,8 +3,11 @@ import React from "react";
 import PhotoWidget from "../photoWidget/PhotoWidget";
 import "./photoAlbum.scss";
 import AddNewPhoto from "../addNewPhoto/AddNewPhoto";
+import { getPlaceholders } from "../../getPlaceholders";
 
-const AlbumPhotos = ({ photos, rootUrl, albumId }) => {
+const AlbumPhotos = ({ photos, rootUrl, albumId, loading }) => {
+  const placeholders = getPlaceholders(20, 160, 160);
+
   return (
     <div>
       <Grid sx={{ flexGrow: 1 }} container spacing={2}>
@@ -16,14 +19,16 @@ const AlbumPhotos = ({ photos, rootUrl, albumId }) => {
             spacing="2"
           >
             <AddNewPhoto url={rootUrl} albumId={albumId} />
-            {photos.map((photo) => (
-              <Grid key={photo.id} item>
-                <PhotoWidget
-                  imageUrl={photo._links.image.href}
-                  selfLink={photo._links.self.href}
-                />
-              </Grid>
-            ))}
+            {loading
+              ? placeholders.map((placeholder) => placeholder)
+              : photos.map((photo) => (
+                  <Grid key={photo.id} item>
+                    <PhotoWidget
+                      imageUrl={photo._links.image.href}
+                      selfLink={photo._links.self.href}
+                    />
+                  </Grid>
+                ))}
           </Grid>
         </Grid>
       </Grid>
