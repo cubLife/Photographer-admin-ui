@@ -1,7 +1,7 @@
 import Keycloak from "keycloak-js";
 
 const keycloak = new Keycloak({
-  url: "https://sequre.na-photo.pl/auth/",
+  url: "http://localhost:8080/auth/",
   realm: "photographer",
   clientId: "photographer-admin",
 });
