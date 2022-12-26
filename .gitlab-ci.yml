@@ -1,5 +1,5 @@
 variables:
-    IMAGE_NAME: $DOCKER_USER/photographer-amin-ui
+    IMAGE_NAME: $DOCKER_USER/photographer-admin-ui
 
 stages:
      - build
